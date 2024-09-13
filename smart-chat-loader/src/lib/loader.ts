@@ -61,7 +61,7 @@ export function loaderInit() {
       });
 
       window.addEventListener("message", (event) => {
-        if (event.origin !== "http://localhost:5173") {
+        if (event.origin !== config.host) {
           return;
         }
 
@@ -76,7 +76,7 @@ export function loaderInit() {
       iframe.contentWindow?.postMessage(config, config.host!);
     });
 
-    const widgetUrl = "http://localhost:5173";
+    const widgetUrl = config.host!;
 
     iframe.src = widgetUrl;
 
