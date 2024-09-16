@@ -14,6 +14,23 @@ function createMessageStore() {
   );
 
   async function addMessage(text: string, userId?: string) {
+
+    const question: MessageModel = {
+      text: 'What would you like to know?',
+      isReply: false,
+      createdAt: dayjs().toJSON(),
+    }
+
+    update((state) =>
+      state.copyWith({
+        status: MessageStatus.loading,
+        messages: [...state.messages, question],
+      })
+    );
+
+    await timeoutPromise(1000);
+
+
     const message: MessageModel = {
       createdAt: dayjs().toJSON(),
       isReply: true,
@@ -28,7 +45,12 @@ function createMessageStore() {
     );
 
     try {
-      const response = await messageService.sendMessage(message);
+      const response = await messageService.sendMessage({
+        identifier: message.sender ?? '',
+        newConversation: false,
+        text: message.text,
+      });
+
 
       update((state) =>
         state.copyWith({

@@ -6,6 +6,16 @@ import { widgetApi, loaderInit } from "./lib";
     #smartChatWidget.smart-chat-active {
         display: none;
     }
+
+    @media screen and (max-width: 600px) {
+      .smart-chat-widget-holder {
+        width: 100% !important;
+        height: 100% !important;
+        max-height: none !important;
+        left: 0 !important;
+        right: 0 !important;
+      }
+    }
   `;
 
   document.body.appendChild(style);

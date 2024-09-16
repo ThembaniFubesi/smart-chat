@@ -8,14 +8,14 @@
   const dispatch = createEventDispatcher();
 </script>
 
-<div class="navbar bg-base-100 rounded-t-2xl border border-base-300">
+<div class="navbar bg-base-100 rounded-t-md border border-base-300 shadow-header z-10">
   <div class="flex-1">
     <div class="flex items-center">
       <div class="flex-auto">
         <img src={logoUrl} class="h-10 w-auto" alt={title} />
       </div>
       <div class="flex-auto ps-2">
-        <h4 class="text-lg">{title}</h4>
+        <h4 class="text-lg font-bold">{title}</h4>
         <h6 class="text-xs">{subTitle}</h6>
       </div>
     </div>

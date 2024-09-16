@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { marked } from "marked";
   import { fade, fly } from "svelte/transition";
   import type { MessageModel } from "../../models";
 
@@ -17,15 +18,21 @@
       <div class="chat-image avatar">
         <div class="w-10 rounded-full">
           <img
-            alt="Tailwind CSS chat bubble component"
-            src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
+            alt="Bot Avatar"
+            src="https://static.landbot.io/daisho/img/avatar-landbot-5.png"
           />
         </div>
       </div>
     {/if}
 
     <div class="chat-bubble" class:chat-bubble-primary={message.isReply}>
-      {@html message.text}
+      {@html marked(message.text)}
     </div>
   </div>
 {/each}
+
+<style>
+  .chat-bubble :global(p) { margin-bottom: 15px; }
+  .chat-bubble :global(p):last-child { margin-bottom: 0px; }
+  .chat-bubble :global(a) { text-decoration: underline; }
+</style>

@@ -16,11 +16,13 @@ export function loaderInit() {
 
   function loadWidget() {
     const widget = document.createElement("div");
+    widget.classList.add('smart-chat-widget-holder')
     const widgetStyle = widget.style;
     widgetStyle.display = "none";
     widgetStyle.boxSizing = "border-box";
     widgetStyle.width = "500px";
-    widgetStyle.height = "600px";
+    widgetStyle.height = "calc(-12px + 100vh)";
+    widgetStyle.maxHeight = "800px";
     widgetStyle.position = "fixed";
     widgetStyle.bottom = "10px";
     widgetStyle.right = "10px";
